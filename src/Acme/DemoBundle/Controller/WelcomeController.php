@@ -16,4 +16,15 @@ class WelcomeController extends Controller
 
         return $this->render('AcmeDemoBundle:Welcome:index.html.twig');
     }
+
+    public function phpAction()
+    {
+        /*
+         * The action's view can be rendered using render() method
+         * or @Template annotation as demonstrated in DemoController.
+         *
+         */
+
+        return $this->render('AcmeDemoBundle:Welcome:index.html.php');
+    }
 }
