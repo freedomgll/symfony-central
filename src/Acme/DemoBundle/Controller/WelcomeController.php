@@ -3,6 +3,7 @@
 namespace Acme\DemoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class WelcomeController extends Controller
 {
@@ -13,7 +14,7 @@ class WelcomeController extends Controller
          * or @Template annotation as demonstrated in DemoController.
          *
          */
-
+        $request = Request::createFromGlobals();
         return $this->render('AcmeDemoBundle:Welcome:index.html.twig');
     }
 
