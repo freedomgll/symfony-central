@@ -1,0 +1,10 @@
+acme_database_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AcmeDatabaseBundle:Default:index }
+
+_db_list:
+    resource: "@AcmeDatabaseBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /db
+
+

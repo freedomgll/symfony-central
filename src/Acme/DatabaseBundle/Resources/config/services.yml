@@ -1,0 +1,4 @@
+services:
+#    acme_database.example:
+#        class: Acme\DatabaseBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
