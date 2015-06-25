@@ -7,4 +7,9 @@ _db_list:
     type:     annotation
     prefix:   /db
 
+_db:
+    resource: "@AcmeDatabaseBundle/Controller/DataBaseController.php"
+    type:     annotation
+    prefix:   /mb
+
 

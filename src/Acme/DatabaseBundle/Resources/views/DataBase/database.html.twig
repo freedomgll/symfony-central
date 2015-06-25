@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to DataBase System!</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1>{{ action }}</h1>
+<ul id="navigation">
+
+</ul>
+
+<table style="width:100%">
+    <tr>
+        <th>Table</th>
+    </tr>
+    {% for table in tables  %}
+    <tr>
+        <td>{{ table['Tables_in_symfony'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
