@@ -11,5 +11,3 @@ _db:
     resource: "@AcmeDatabaseBundle/Controller/DataBaseController.php"
     type:     annotation
     prefix:   /mb
-
-
