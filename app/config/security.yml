@@ -29,18 +29,18 @@ security:
 
         # the login page has to be accessible for everybody
         login_firewall:
-            pattern:   ^/login/$
+            pattern:   ^/admin/login$
             security: false
 
-        login_secured_area:
-            pattern:    ^/admin
+        admin_secured_area:
+            pattern:    ^/
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
             form_login:
-                check_path: _security_check
-                login_path: _login
+                check_path: admin_security_check
+                login_path: admin_login
             logout:
-                path:   _logout
+                path:   admin_logout
                 target: _demo
             #anonymous: ~
             #http_basic:
@@ -52,4 +52,4 @@ security:
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/admin, roles: ROLE_USER }
+        #- { path: ^/admin, roles: ROLE_USER }
