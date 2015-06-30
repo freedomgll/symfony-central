@@ -3,7 +3,7 @@
 security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Lgu\Bundle\AdminBundle\Entity\User: plaintext
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -12,12 +12,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
-                    lgu: { password: lgu, roles: [ 'ROLE_USER' ] }
+        user_db:
+            entity: { class: Lgu\Bundle\AdminBundle\Entity\User }
 
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
