@@ -33,7 +33,7 @@ security:
             security: false
 
         login_secured_area:
-            pattern:    ^/login
+            pattern:    ^/admin
             # it's important to notice that in this case _demo_security_check and _demo_login
             # are route names and that they are specified in the AcmeDemoBundle
             form_login:
@@ -52,4 +52,4 @@ security:
     # http://symfony.com/doc/current/cookbook/security/access_control.html
     access_control:
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
-        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_USER }

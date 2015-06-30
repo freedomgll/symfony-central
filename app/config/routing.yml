@@ -1,3 +1,7 @@
+lgu_admin:
+    resource: "@LguAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 acme_database:
     resource: "@AcmeDatabaseBundle/Resources/config/routing.yml"
     prefix:   /
