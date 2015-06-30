@@ -28,12 +28,6 @@ security:
             security: false
 
         # the login page has to be accessible for everybody
-        demo_login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
-
-
         login_firewall:
             pattern:   ^/login/$
             security: false
