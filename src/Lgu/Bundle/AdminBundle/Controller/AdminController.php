@@ -5,6 +5,7 @@ namespace Lgu\Bundle\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -65,5 +66,25 @@ class AdminController extends Controller
     public function demoAction()
     {
         return array();
+    }
+
+    /**
+     * @Route("/hello", defaults={"name"="World"}),
+     * @Route("/hello/{name}", name="admin_demo_hello")
+     * @Template()
+     */
+    public function helloAction($name)
+    {
+        return array('name' => $name);
+    }
+
+    /**
+     * @Route("/hello/admin/{name}", name="admin_demo_hello_admin")
+     * @Security("is_granted('ROLE_ADMIN')")
+     * @Template()
+     */
+    public function helloadminAction($name)
+    {
+        return array('name' => $name);
     }
 }
