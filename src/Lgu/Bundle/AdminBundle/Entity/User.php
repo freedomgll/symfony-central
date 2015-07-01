@@ -38,6 +38,15 @@ class User implements UserInterface, \Serializable
      */
     private $isActive;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="sys_user_role",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     *      )
+     **/
+    private $roles;
+
     public function __construct()
     {
         $this->isActive = true;
@@ -64,7 +73,12 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        //return array('ROLE_USER','ROLE_ADMIN');
+        $roles = array();
+        foreach ($this->roles as $userRole) {
+            $roles[] = $userRole->getRole();
+        }
+        return $roles;
     }
 
     public function eraseCredentials()
@@ -175,5 +189,28 @@ class User implements UserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add roles
+     *
+     * @param \Lgu\Bundle\AdminBundle\Entity\Role $roles
+     * @return User
+     */
+    public function addRole(\Lgu\Bundle\AdminBundle\Entity\Role $roles)
+    {
+        $this->roles[] = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Remove roles
+     *
+     * @param \Lgu\Bundle\AdminBundle\Entity\Role $roles
+     */
+    public function removeRole(\Lgu\Bundle\AdminBundle\Entity\Role $roles)
+    {
+        $this->roles->removeElement($roles);
     }
 }

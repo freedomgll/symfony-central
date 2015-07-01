@@ -63,7 +63,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/demo")
+     * @Route("/demo", name="admin_demo")
      * @Template()
      */
     public function demoAction()
