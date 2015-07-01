@@ -1,0 +1,43 @@
+{% extends 'LguAdminBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1 class="title">Register</h1>
+
+    {% if errors is defined %}
+        {% for error in errors %}
+            <div class="error">{{ error }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{{ path("register") }}" method="post" id="login">
+        <div>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="_username" value="{{ user.username }}"/>
+        </div>
+
+        <div>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="_email"/>
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="_password"/>
+        </div>
+
+        <div>
+            <label for="passwordConfirm">Confirm Password</label>
+            <input type="password" id="passwordConfirm" name="_passwordConfirm"/>
+        </div>
+
+        <button type="submit" class="sf-button">
+            <span class="border-l">
+                <span class="border-r">
+                    <span class="btn-bg">Register</span>
+                </span>
+            </span>
+        </button>
+    </form>
+{% endblock %}
+
+{% set code = code(_self) %}

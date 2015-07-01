@@ -9,6 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+
+use Lgu\Bundle\AdminBundle\Entity\User;
 
 /**
  * @Route("/admin")
@@ -86,5 +89,64 @@ class AdminController extends Controller
     public function helloadminAction($name)
     {
         return array('name' => $name);
+    }
+
+    /**
+     * @Route("/loginRegister")
+     * @Template("LguAdminBundle:Admin:register.html.twig")
+     */
+    public function loginRegisterAction()
+    {
+        return array('user' => new User());
+    }
+    /**
+     * @Route("/register", name="register")
+     * @Template()
+     */
+    public function registerAction(Request $request)
+    {
+        $username = $request->request->get('_username');
+        $email = $request->request->get('_email');
+        $password = $request->request->get('_password');
+        $passwordConfirm = $request->request->get('_passwordConfirm');
+
+        $error = array();
+        //very basic validation
+        if($username ==''){
+            $error[] = 'Please enter the username.';
+        }
+
+        if($password ==''){
+            $error[] = 'Please enter the password.';
+        }
+
+        if($passwordConfirm ==''){
+            $error[] = 'Please confirm the password.';
+        }
+
+        if($password != $passwordConfirm){
+            $error[] = 'Passwords do not match.';
+        }
+
+        $user = new User();
+        $user->setUsername($username);
+        $user->setPassword($password);
+        $user->setEmail($email);
+
+        if(count($error) == 0){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->autoLogin($user);
+        }
+
+        return array('errors' => $error, 'user' => $user);
+    }
+
+    public function autoLogin(User $user) {
+        $token = new UsernamePasswordToken($user, null, 'secured_area', $user->getRoles());
+        $this->get('security.context')->setToken($token);
+        $this->get('session')->set('_security_main',serialize($token));
     }
 }
