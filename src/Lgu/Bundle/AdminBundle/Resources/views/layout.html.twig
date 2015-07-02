@@ -17,7 +17,13 @@
     {% block content_header %}
         <ul id="menu">
             {% block content_header_more %}
-                <li><a href="{{ path('admin_demo') }}">Demo Home</a></li>
+                {% if app.user %}
+                    <li>欢迎你，<strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong></li>
+                    <li><a href="{{ path('admin_logout') }}">安全退出</a></li>
+                {% else  %}
+                    <li><a href="{{ path('admin_login') }}">登录</a></li>
+                    <li><a href="{{ path('admin_loginregister') }}">注册</a></li>
+                {% endif %}
             {% endblock %}
         </ul>
 

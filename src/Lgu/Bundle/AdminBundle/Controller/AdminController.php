@@ -92,7 +92,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/loginRegister")
+     * @Route("/loginRegister", name="admin_loginregister" )
      * @Template("LguAdminBundle:Admin:register.html.twig")
      */
     public function loginRegisterAction()
