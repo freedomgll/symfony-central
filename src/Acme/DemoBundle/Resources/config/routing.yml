@@ -1,7 +1,3 @@
-_welcome:
-    path:     /
-    defaults: { _controller: AcmeDemoBundle:Welcome:index }
-
 _login_secured:
     resource: "@AcmeDemoBundle/Controller/LoginController.php"
     type:     annotation

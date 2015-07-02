@@ -2,6 +2,10 @@ lgu_admin_homepage:
     path:     /hello/{name}
     defaults: { _controller: LguAdminBundle:Default:index }
 
+lgu_welcome:
+    resource: "@LguAdminBundle/Controller/WelcomeController.php"
+    type:     annotation
+
 lgu_admin:
     resource: "@LguAdminBundle/Controller/AdminController.php"
     type:     annotation
