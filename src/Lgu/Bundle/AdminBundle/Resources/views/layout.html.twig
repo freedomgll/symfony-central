@@ -21,8 +21,8 @@
                     <li>欢迎你，<strong>{{ app.user ? app.user.username : 'Anonymous' }}</strong></li>
                     <li><a href="{{ path('admin_logout') }}">安全退出</a></li>
                 {% else  %}
-                    <li><a href="{{ path('admin_login') }}">登录</a></li>
-                    <li><a href="{{ path('admin_loginregister') }}">注册</a></li>
+                    <li><a href="{{ path('account_login') }}">登录</a></li>
+                    <li><a href="{{ path('account_register') }}">注册</a></li>
                 {% endif %}
             {% endblock %}
         </ul>

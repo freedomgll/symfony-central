@@ -1,5 +1,9 @@
 {% extends 'LguAdminBundle::layout.html.twig' %}
 
+{% block content_header_more %}
+    <li><a href="{{ path('lgu_admin_welcome_index') }}">首页</a></li>
+{% endblock %}
+
 {% block content %}
     <h1 class="title">Register</h1>
 

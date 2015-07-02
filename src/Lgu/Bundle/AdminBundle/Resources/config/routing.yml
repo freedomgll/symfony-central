@@ -9,3 +9,7 @@ lgu_welcome:
 lgu_admin:
     resource: "@LguAdminBundle/Controller/AdminController.php"
     type:     annotation
+
+lgu_account:
+    resource: "@LguAdminBundle/Controller/AccountController.php"
+    type:     annotation

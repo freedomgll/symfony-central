@@ -25,7 +25,7 @@ security:
 
         # the login page has to be accessible for everybody
         login_firewall:
-            pattern:   ^/admin/login$
+            pattern:   ^/account
             security: false
 
         admin_secured_area:
@@ -34,11 +34,11 @@ security:
             # are route names and that they are specified in the AcmeDemoBundle
             form_login:
                 check_path: admin_security_check
-                login_path: admin_login
+                login_path: account_login
             logout:
                 path:   admin_logout
-                target: _demo
-            #anonymous: ~
+                target: /
+            anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
 
