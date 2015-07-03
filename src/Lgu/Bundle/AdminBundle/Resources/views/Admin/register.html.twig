@@ -13,7 +13,7 @@
         {% endfor %}
     {% endif %}
 
-    <form action="{{ path("register") }}" method="post" id="login">
+    <form action="{{ path("account_register") }}" method="post" id="login">
         <div>
             <label for="username">Username</label>
             <input type="text" id="username" name="_username" value="{{ user.username }}"/>

@@ -205,6 +205,19 @@ class User implements UserInterface, \Serializable
     }
 
     /**
+     * Add roles
+     *
+     * @param \Lgu\Bundle\AdminBundle\Entity\Role $roles
+     * @return User
+     */
+    public function addRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
      * Remove roles
      *
      * @param \Lgu\Bundle\AdminBundle\Entity\Role $roles
